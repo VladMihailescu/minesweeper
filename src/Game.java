@@ -1,5 +1,5 @@
 import javax.swing.*;
-import java.awt.*;
+//import java.awt.*;
 import java.awt.event.MouseListener;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -17,9 +17,9 @@ public class Game implements MouseListener, ActionListener{
 		this.cols = cols;
 		this.mines = mines;
 		
-		this.board = new Board(rows, cols, mines);
+		this.board = new Board(this.rows, this.cols, this.mines);
 		
-		this.gui = new GUI(rows, cols, mines);
+		this.gui = new GUI(this.rows, this.cols, this.mines);
 		this.gui.setListeners(this);
 		this.gui.updateBoard(board);
 	}
@@ -49,7 +49,8 @@ public class Game implements MouseListener, ActionListener{
 				board.getCells()[row][col].setFlagged(true);
 			}
 		}else if(SwingUtilities.isLeftMouseButton(arg0)) {
-			board.getCells()[row][col].setHidden(false);
+			board.updateAround(row,col);
+			board.updateGameStatus();
 		}
 		gui.updateBoard(board);
 	}
