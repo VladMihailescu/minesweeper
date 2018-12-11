@@ -31,4 +31,10 @@ public class Cell {
 			flag = value;
 		}
 	}
+	public void reset() {
+		this.hidden = true;
+		this.mine = mine;
+		this.flag = false;
+		this.value = value;
+	}
 }

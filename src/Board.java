@@ -36,6 +36,18 @@ public class Board {
 	public Cell[][] getCells(){
 		return cellsBoard;
 	}
+	public void reset() {
+		this.finished = false;
+		this.win = false;
+		
+		for(int i = 0; i < rows; ++i) {
+			for(int j = 0; j < cols; ++j) {
+				cellsBoard[i][j].reset();
+			}
+		}
+		
+		populateBoard();
+	}
 	private void FloodFill(int row, int col) {
 		if(!(row < rows && row >= 0 && col < cols && col >= 0))
 			return;

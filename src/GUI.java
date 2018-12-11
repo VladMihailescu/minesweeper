@@ -10,6 +10,7 @@ public class GUI extends JFrame{
 	private JLabel winLabel;
 	private JLabel loseLabel;
 	private JLabel mineLabel;
+	private JButton resetButton;
 	private int SCREEN_WIDTH = 550;
 	private int SCREEN_HEIGHT = 520;
 	
@@ -52,10 +53,15 @@ public class GUI extends JFrame{
 		loseLabel.setFont(new Font("Comic Sans MS", Font.BOLD, 20));
 		JLabel mineImage = new JLabel("", SwingConstants.CENTER);
 		mineImage.setIcon(new ImageIcon(getClass().getResource("/media/mine.png")));
+		resetButton = new JButton("Reset");
+		resetButton.setName("Reset");
+		resetButton.setBorder(BorderFactory.createEmptyBorder());
+		resetButton.setFont(new Font("Comic Sans MS", Font.BOLD, 20));
 		menuInit.add(mineImage);
 		menuInit.add(mineLabel);
 		menuInit.add(winLabel, BorderLayout.CENTER);
 		menuInit.add(loseLabel, BorderLayout.CENTER);
+		menuInit.add(resetButton,BorderLayout.CENTER);
 		winLabel.setVisible(false);
 		loseLabel.setVisible(false);
 		
@@ -70,6 +76,7 @@ public class GUI extends JFrame{
 				buttonsBoard[i][j].addMouseListener(game);
 			}
 		}
+		resetButton.addActionListener(game);
 	}
 	public void updateBoard(Board board) {
 		if(board.isFinished() == true) {

@@ -27,7 +27,13 @@ public class Game implements MouseListener, ActionListener{
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
 		// TODO Auto-generated method stub
-		
+		JButton button = (JButton)arg0.getSource();
+		String aux = button.getName();
+		//System.out.println(aux);
+		if(aux.equals("Reset")) {
+			board.reset();
+			gui.updateBoard(board);
+		}
 	}
 
 	@Override
