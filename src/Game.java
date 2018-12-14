@@ -55,8 +55,10 @@ public class Game implements MouseListener, ActionListener{
 				board.getCells()[row][col].setFlagged(true);
 			}
 		}else if(SwingUtilities.isLeftMouseButton(arg0)) {
-			board.updateAround(row,col);
-			board.updateGameStatus();
+			if(board.getCells()[row][col].isFlagged() == false) {
+				board.updateAround(row,col);
+				board.updateGameStatus();
+			}
 		}
 		gui.updateBoard(board);
 	}
